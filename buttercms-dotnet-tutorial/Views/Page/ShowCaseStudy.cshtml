@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "ShowCaseStudy";
+
+}
+
+@model PageViewModel
+
+
+
+<p class="mt-5">@Html.Raw(Model.Readme)</p>
+<h1>SEO</h1>
+@foreach (var item in Model.Seo)
+{
+
+    <ul>
+        <h1><label>@Html.DisplayFor(modelItem => item.Key)</label></h1>
+        <li>@Html.DisplayFor(modelItem => item.Value);</li>
+    </ul>
+}
+
+<h1>Open Graph</h1>
+@foreach (var item in Model.openGraph)
+{
+    <ul>
+        <h1><label>@Html.DisplayFor(modelItem => item.Key)</label></h1>
+        @if (item.Value.Contains("http"))
+        {
+            <li><img src="@Html.DisplayFor(modelItem => item.Value)" /></li>
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.Value)
+        }
+
+
+    </ul>
+}
+
+<h1>Twitter Card</h1>
+@foreach (var item in Model.twitterCard)
+{
+    <ul>
+        <h1><label>@Html.DisplayFor(modelItem => item.Key)</label></h1>
+        @if (item.Value.Contains("http"))
+        {
+            <li><img src="@Html.DisplayFor(modelItem => item.Value)" /></li>
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.Value)
+        }
+
+
+    </ul>
+}
